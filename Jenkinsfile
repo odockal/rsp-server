@@ -57,7 +57,10 @@ pipeline {
     options {
         timeout(time: 2, unit: 'HOURS')
     }
-
+    
+    tools {
+        jdk 'openjdk-11' 
+    }
 
     stages {
         stage('Checkout SCM') {
@@ -69,7 +72,7 @@ pipeline {
         }
         stage('Build and tests') {
             parallel {
-                stage('Java 8 runtime') {
+                stage('OpenJDK 11') {
                     agent {
                         label 'rhel7'
                     }
